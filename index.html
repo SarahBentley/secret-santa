@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Santa 🎄</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+            <div class="snowflake">❄</div>
+        </div>
+        
+        <header>
+            <h1>🎅 Secret Santa 🎄</h1>
+            <p class="subtitle">Let's draw names for our gift exchange!</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Admin Section for Alex and Raphael -->
+            <div class="admin-section" id="adminSection">
+                <h2>🎁 Already Have Your Person?</h2>
+                <p class="admin-note">If you're Alex O or Raphaël and already bought a gift, enter your assignment here. Once both have entered, everyone else will be automatically assigned!</p>
+                <div class="admin-form">
+                    <label for="adminName">Your Name:</label>
+                    <select id="adminName">
+                        <option value="">Select your name...</option>
+                    </select>
+                    
+                    <label for="adminAssignment">Who did you get?</label>
+                    <select id="adminAssignment">
+                        <option value="">Select person...</option>
+                    </select>
+                    
+                    <button id="saveAdminAssignment" class="btn btn-primary">Save My Assignment</button>
+                </div>
+            </div>
+
+            <!-- Participant Section -->
+            <div class="participant-section" id="participantSection">
+                <h2>🎲 View Your Secret Santa</h2>
+                <div class="draw-form">
+                    <label for="participantName">Your Name:</label>
+                    <select id="participantName">
+                        <option value="">Select your name...</option>
+                    </select>
+                    
+                    <button id="drawButton" class="btn btn-draw" disabled>🎁 View My Person!</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h2>🎉 Your Secret Santa Assignment</h2>
+                <div class="result-card">
+                    <p class="result-text">You are buying a gift for:</p>
+                    <p class="result-name" id="resultName"></p>
+                    <p class="result-note">Keep this a secret! 🤫</p>
+                </div>
+            </div>
+
+            <!-- All Assignments View (for verification) -->
+            <div class="assignments-view" id="assignmentsView" style="display: none;">
+                <h2>📋 All Assignments</h2>
+                <div id="assignmentsList"></div>
+                <button id="resetButton" class="btn btn-reset">🔄 Reset All Assignments</button>
+            </div>
+        </div>
+
+        <footer>
+            <button id="toggleViewButton" class="btn btn-secondary">👁️ View All Assignments</button>
+        </footer>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
