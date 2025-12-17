@@ -380,16 +380,23 @@ class SecretSanta {
         const view = document.getElementById('assignmentsView');
         const button = document.getElementById('toggleViewButton');
         
-        // If view is hidden, require password to show it
-        if (view.style.display === 'none') {
+        // If view is hidden, require password to show it (always, regardless of admin status)
+        if (view.style.display === 'none' || view.style.display === '') {
             const password = prompt('⚠️ Enter password to view all assignments:');
+            if (password === null) {
+                // User cancelled the prompt
+                return;
+            }
             if (password !== 'IAmSantaClaus') {
                 alert('❌ Incorrect password! Access denied.');
                 return;
             }
+            // Password correct - show the view
+            this.updateAssignmentsView(); // Refresh the list in case assignments changed
             view.style.display = 'block';
             button.textContent = '🙈 Hide Assignments';
         } else {
+            // Hide the view (no password needed to hide)
             view.style.display = 'none';
             button.textContent = '⚠️ View All Assignments';
         }
