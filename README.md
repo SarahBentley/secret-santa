@@ -7,9 +7,9 @@ A Christmas-themed web app for managing Secret Santa assignments, with special h
 - 🎄 Beautiful Christmas-themed UI with animated snowflakes
 - 🎁 Special section for Alex and Raphaël to input their existing assignments
 - 🎲 Automatic random assignment for everyone else after Alex and Raphaël input theirs
-- 💾 Local storage to save assignments (assignments stay the same once set)
-- 👁️ View all assignments (for verification)
-- 🔄 Reset functionality
+- 💾 Shared storage via Firebase (everyone sees the same assignments)
+- 👁️ View all assignments (password protected)
+- 🔒 Password protection for viewing all assignments
 
 ## Running Locally
 
@@ -95,5 +95,5 @@ See `FIREBASE_SETUP.md` for detailed instructions. Without Firebase, each person
 - **Automatic Assignment**: Once Alex O and Raphaël enter their assignments, everyone else is automatically randomly assigned
 - **Persistent**: Assignments stay the same once set (no redrawing)
 - **No Self-Assignment**: The algorithm ensures no one gets themselves
-- **Reset**: Use the "Reset All Assignments" button in the assignments view to start over
+- **Password Protected**: Viewing all assignments requires the password "IAmSantaClaus"
 

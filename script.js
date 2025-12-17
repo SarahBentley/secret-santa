@@ -252,16 +252,9 @@ class SecretSanta {
             }
         });
 
-        // Toggle assignments view
+        // Toggle assignments view (with password protection)
         document.getElementById('toggleViewButton').addEventListener('click', () => {
             this.toggleAssignmentsView();
-        });
-
-        // Reset button
-        document.getElementById('resetButton').addEventListener('click', () => {
-            if (confirm('Are you sure you want to reset ALL assignments? This cannot be undone!')) {
-                this.resetAssignments();
-            }
         });
 
         // Load existing assignments for display
@@ -387,12 +380,18 @@ class SecretSanta {
         const view = document.getElementById('assignmentsView');
         const button = document.getElementById('toggleViewButton');
         
+        // If view is hidden, require password to show it
         if (view.style.display === 'none') {
+            const password = prompt('⚠️ Enter password to view all assignments:');
+            if (password !== 'IAmSantaClaus') {
+                alert('❌ Incorrect password! Access denied.');
+                return;
+            }
             view.style.display = 'block';
             button.textContent = '🙈 Hide Assignments';
         } else {
             view.style.display = 'none';
-            button.textContent = '👁️ View All Assignments';
+            button.textContent = '⚠️ View All Assignments';
         }
     }
 
@@ -416,16 +415,6 @@ class SecretSanta {
         });
     }
 
-    async resetAssignments() {
-        this.assignments = {};
-        await this.saveAssignments();
-        this.updateAssignmentsView();
-        document.getElementById('resultsSection').style.display = 'none';
-        document.getElementById('participantName').value = '';
-        document.getElementById('drawButton').disabled = true;
-        this.updateParticipantSection();
-        alert('All assignments have been reset!');
-    }
 
     updateParticipantSection() {
         // Remove any waiting messages
